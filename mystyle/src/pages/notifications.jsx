@@ -1,3 +1,5 @@
+// BEING DONE BY JOHANNE
+
 /*
 
     shows who wants to friend you

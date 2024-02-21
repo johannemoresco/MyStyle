@@ -1,3 +1,5 @@
+// BEING DONE BY SYDNEY
+
 // other user's profile, not their own
 
 /* 

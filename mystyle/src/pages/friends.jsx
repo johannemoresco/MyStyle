@@ -1,6 +1,11 @@
+// LOW PRIORITY - GOES TO WHOEVER FINISHES FIRST
+
 /*
 
     shows who your friends are
+
+    its a list. just looks like instagram followers but its ur followers
+
 
 
 */

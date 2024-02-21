@@ -1,3 +1,5 @@
+// BEING DONE BY GUS
+
 // heres where the user will sign up
 
 /* make a username, email, pwd */

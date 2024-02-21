@@ -1,5 +1,9 @@
+// BEING TAKEN BY JOHANNE
+
 // where the user uploads their own photos, and goes absolutely crazy
 // tag their own fits ,
+
+
 
 /* defaults to emojis of shirt pants shoes,,
 
