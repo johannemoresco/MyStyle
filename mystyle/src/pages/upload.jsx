@@ -1,33 +1,38 @@
-// BEING TAKEN BY JOHANNE
+// Johanne 
+// stuff to do next:
+// want to make it so once they hit submit the page rerenders with the image they uploaded
+// also save the stuff they write on the input boxes so that it can be used for the actual post 
+// also make it prettier lol 
+import './upload.css'
+import React, {useState} from "react";
 
-// where the user uploads their own photos, and goes absolutely crazy
-// tag their own fits ,
+const Upload = () => {
+    return(
+        <div className='wrapper'>
+            <link rel="stylesheet" href="upload.css"></link>
 
+            <h1 className='header1'> what are you wearing today? </h1>
 
+        <div className='uploadimage'>
+        <input type="file" name="file"/>
+        <button>Submit</button>
+        </div>
 
-/* defaults to emojis of shirt pants shoes,,
+        <div className='photo'>
+            <img src="smallberg.jpeg" alt="A picture of David Smallberg." className="photo-img"/>
+        </div>
 
-if no info inputted for shirt, dont display shirt on homepage
+        <div>
+            <div className='clotheslinking'>
+            <h2 className='header2'> where are your clothes from? </h2>
+            <div className="emoji">👕 <input className='input' placeholder="Link or Name of Brand"></input> </div>
+            <div className="emoji">👖 <input className='input' placeholder="Link or Name of Brand"></input> </div>
+            <div className="emoji">👗 <input className='input' placeholder="Link or Name of Brand"></input> </div>
+            <div className="emoji">👟 <input className='input' placeholder="Link or Name of Brand"></input> </div>
+            </div>
+        </div>
+        </div>
+);
+}
 
-
-options are:
-
-    shirt
-    dress
-    pants
-    skirt
-    shoes
-
-whatever they fill out gets displayed
-
-if shirt == null
-    continue
-
-    a little more obviously but yasssss
-*/
-
-/*
-
-    ACCESSABLE BY: NAVBAR
-    https://docs.google.com/presentation/d/1zHLfMZQK-1YZTEmax9DEc4kZKvH03G0Nm6-o5POn9nE/edit#slide=id.g2947b929940_0_298
-*/
+export default Upload

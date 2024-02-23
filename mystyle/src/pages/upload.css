@@ -1,0 +1,57 @@
+.wrapper{
+    margin-left:auto;
+    margin-right:auto;
+    width:960px;
+}
+/* "Share your outfit */
+.header1{
+  text-align: center;
+  margin-top: 36px;
+}
+/* "Let your friends know where you got your pieces" */
+.header2{
+  text-align: right;
+  padding: 10px;
+  margin-top: -560px;
+  margin-right: -40px;
+  font-size: 30px;
+
+}
+/* All of the emojis */
+.emoji {
+  text-align: right;
+  font-size: 60px;
+  padding: 10px;
+  margin-top: -5px;
+  margin-right: -15px;
+}
+/* */
+.clotheslinking {
+  text-align: right;
+  padding: 100px;
+  margin-top: -10px;
+}
+.input{
+  font-size: 30px;
+  border: 2px solid rgb(0,0,0);
+  border-radius: 10px;
+}
+.uploadimage{
+  text-align: center;
+}
+.photo{
+  width: 250px;
+  height: 350px;
+  border: 10px solid rgb(0, 0, 0);
+  border-radius: 15px;
+  padding: 50px;
+  margin-top: 50px;
+  margin-left: 80px;
+  overflow: hidden;
+
+}
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
