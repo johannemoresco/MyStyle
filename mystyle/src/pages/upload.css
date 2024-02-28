@@ -1,0 +1,73 @@
+body{
+  background-color:aliceblue;
+}
+.wrapper{
+    margin-left:auto;
+    margin-right:auto;
+    width:960px;
+}
+/* "what are you wearing today?" */
+.header1{
+  text-align: center;
+  margin-top: 36px;
+}
+/* "where are your clothes from?" */
+.header2{
+  text-align: right;
+  padding: 10px;
+  margin-top: -560px;
+  margin-right: -75px;
+  font-size: 30px;
+
+}
+/* All of the emojis */
+.emoji {
+  text-align: right;
+  font-size: 60px;
+  padding: 10px;
+  margin-top: -5px;
+  margin-right: -15px;
+}
+/* the input boxes as well as the emojis */
+.clotheslinking {
+  text-align: right;
+  padding: 40px;
+  margin-top: 20px;
+}
+/* the input boxes */ 
+.input{
+  font-size: 28px;
+  border: 3px solid rgb(0,0,0);
+  border-radius: 10px;
+}
+/* the buttons to upload and submit the image user chooses */
+.uploadimage{
+  text-align: center;
+
+}
+/* the container for the photo */
+.photo{
+  width: 250px;
+  height: 350px;
+  border: 10px solid rgb(0, 0, 0);
+  border-radius: 15px;
+  padding: 50px;
+  margin-top: 50px;
+  margin-left: 80px;
+  overflow: hidden;
+  background-color: whitesmoke;
+
+}
+/* the actual photo */
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* the button to submit your outfit */ 
+.uploadfit {
+  margin-left: 800px;
+  margin-top: -100px;
+  font-size: 20px;
+  border-radius: 10px;
+}
