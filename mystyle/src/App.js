@@ -8,7 +8,6 @@ import Upload from './pages/upload';
 function App() {
   return (
     <div className="App">
-      <SignIn/>
       <SignUp/>
     </div>
   );
