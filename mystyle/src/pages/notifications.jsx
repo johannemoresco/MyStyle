@@ -1,6 +1,7 @@
 // BEING DONE BY JOHANNE
 import React, { useState } from "react"
 import "./notifications.css"
+
 /*
 
     shows who wants to friend you

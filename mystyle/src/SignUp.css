@@ -28,7 +28,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 min-height: 100vh;
-background: url('test.jpeg') no-repeat;
+background: url('black.jpg') no-repeat;
 background-size: cover;
 background-position: center;
 
@@ -36,7 +36,7 @@ background-position: center;
 }
 
 
-.sign-in-container {
+.sign-up-container {
 width: 420px;
 background: rgb(255, 255, 255);
 border: 2px solid rgba(0, 0, 0, 0.034);
@@ -48,16 +48,47 @@ border-radius: 10px;
 padding: 30px 40px;
 }
 
-
-.sign-in-container h1 {
-font-size: 30px;
-text-align: center;
-
-
+.sign-up-container .image
+{
+    text-align: center;
 }
 
+.image input[type="file"] {
+    /*display: ruby-base-container; /* Display the input as a block element */
+    /*margin: 0 auto; /* Center the input horizontally */
+    position: relative;
+    padding: 30px !important;
+    background-color: var(--accent);
+    border-radius: 100%;
+    width: fit-content;
+  }
 
-.sign-in-container .input-box {
+.pfp {
+display: flex;
+justify-content: center; /* Center horizontally */
+align-items: center; /* Center vertically */
+height: 200px; /* Just for demonstration */
+
+}
+  
+
+
+.sign-up-container h1 {
+font-size: 30px;
+text-align: center;
+}
+
+.sign-up-container h2{
+font-size: 15px;
+margin: 15px 0;
+}
+
+/* .sign-up-container em{
+margin: 30px 0;
+} */
+
+
+.sign-up-container .input-box {
 position: relative;
 width: 100%;
 height: 50px;
@@ -93,32 +124,32 @@ font-size: 20px;
 }
 
 
-.sign-in-container .remember-forgot {
+/* .sign-up-container .remember-forgot {
 display: flex;
 justify-content: space-between;
 font-size: 14.5px;
 margin: -15px 0 15px;
-}
+} */
 
 
-.remember-forgot label input {
+/* .remember-forgot label input {
 accent-color: #000000;
 margin-right: 3px;
-}
+} */
 
 
-.remember-forgot a {
+/* .remember-forgot a {
 color: #000000;
 text-decoration: none;
-}
+} */
 
 
-.remember-forgot a:hover {
+/* .remember-forgot a:hover {
 text-decoration: underline;
-}
+} */
 
 
-.sign-in-container .btn {
+.sign-up-container .btn {
 width: 100%;
 height: 45px;
 background: #000000;
@@ -133,7 +164,7 @@ font-weight: 600;
 }
 
 
-.sign-in-container .register-link {
+.sign-up-container .login-link {
 font-size: 14.5px;
 text-align: center;
 margin: 20px 0 15px;
@@ -142,14 +173,14 @@ margin: 20px 0 15px;
 }
 
 
-.register-link p a {
+.login-link p a {
 color: #000000;
 text-decoration: none;
 font-weight: 600;
 }
 
 
-.register-link p a:hover {
+.login-link p a:hover {
 text-decoration: underline;
 }
 

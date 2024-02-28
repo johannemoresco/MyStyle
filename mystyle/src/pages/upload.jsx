@@ -10,7 +10,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage, database } from "../firebase"
 import { v4 } from "uuid";
 
-// assuming we are going to click upload with a user's information already 
+// assume we are going to click upload with a user's information already 
 const Upload = () => {
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState('');
@@ -74,5 +74,4 @@ const Upload = () => {
         </div>
 );
 }
-
 export default Upload
