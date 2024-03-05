@@ -51,17 +51,17 @@ const Otherprofile = () => {
             <link rel="stylesheet" href="userprofile.css"></link>
 
             <div className="profile-header">
-                <img src="smallberg.jpeg" alt="pfp" />
+                <img src="Paul_Eggert.jpeg" alt="pfp" />
                 <div className="profile-info">
-                    <div className="header1"> Someone else's Sexy Closet </div>
+                    <div className="header1"> Not Self's Sexy Closet </div>
                 </div>
             </div>
             <hr />
             <div className="profile-top-three">
                 {/*top three images*/}
-                <img src="smallberg.jpeg" alt="pfp" />
-                <img src="smallberg.jpeg" alt="pfp" />
-                <img src="smallberg.jpeg" alt="pfp" />
+                <img src="Paul_Eggert.jpeg" alt="pfp" />
+                <img src="Paul_Eggert.jpeg" alt="pfp" />
+                <img src="Paul_Eggert.jpeg" alt="pfp" />
             </div>
             
 
