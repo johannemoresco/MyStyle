@@ -1,0 +1,92 @@
+.post-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+  .post-left {
+    flex: 1;
+    display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers children horizontally */
+  }
+ 
+
+
+  .post-right {
+    flex: 1;
+    padding-left: 20px;
+  }
+ 
+
+
+  .username {
+    color: white; /* Sets the username text color to white */
+  }
+
+
+  .emojis {
+   
+        display: flex;
+        justify-content: center; /* Centers the emoji reactions */
+        flex-wrap: wrap; /* emojis to wrap onto the next line if needed */
+        width: 100%; /* Ensures the emoji container is wide as parent */
+     
+}
+ 
+  .emojis span {
+    cursor: pointer;
+    color: white;
+    margin-right: 10px; /* Add space in emojis */
+  }
+ 
+  .clothing-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+ 
+  .clothing-item .clothing-emoji {
+    margin-right: 10px;
+  }
+ 
+  .post-photo img {
+    width: 700px; /* Set width */
+    height: 600px; /* Set height */
+    object-fit: cover; /* cover the area without stretching the image */
+    border-radius: 9px; /* rounded corners */
+    margin-bottom: 10px; /* Space between photo and emoji reactions */
+  }
+
+
+  .content {
+    height: 100vh;
+    overflow-y: auto;
+    position: relative;
+  }
+
+
+
+  /*formatting the posts into main content and will repeat for every user post*/
+  .main-content {
+    padding-top: 60px; /* This should be at least as tall as your navbar */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
