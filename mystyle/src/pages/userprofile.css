@@ -15,12 +15,14 @@ body {
     width: 950px;
 }
 
-.profile-header{
+.profile-header {
     color: white;
     display: flex;
     align-items: center;
+    text-align: center;
 }
-.profile-header img {
+
+    .profile-header img {
         margin-right: 5px;
         width: 275px;
         height: 275px;
@@ -31,7 +33,7 @@ body {
         margin-right: auto;
         border-radius: 50%;
         max-width: 100%;
-}
+    }
 
 .profile-top-three {
     display: flex;
@@ -62,7 +64,7 @@ body {
     height: 300px;
     margin-top: 20px;
     object-fit: cover;
-    margin-left: 5px;           
+    margin-left: 5px;
     max-width: 100%;
     border-radius: 10%;
     /*display: flex;*/
@@ -72,17 +74,24 @@ body {
 /* username on da page */
 .header1 {
     color: white;
-    /*/font-family: 'Poor Richard';*/ font-family: 'Poor Richard';
     text-align: center;
-    margin-top: 0px;
-    margin-right: 200px;
+    margin: 50px 115px 50px 115px;
     font-size: 60px;
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 .friends {
     color: white;
-    font: 10px;
+    font-size: 20px;
     margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+    text-align: left;
+}
+
+.bottom-space {
+    margin-top: 50px;
 }
 
 /*img {
