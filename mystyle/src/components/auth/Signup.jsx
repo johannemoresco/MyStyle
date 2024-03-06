@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { addDoc, collection, query, getDocs, where } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
-
+import "../../pages/SignUp.css";
 
 
 

@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from 'react';
 import SignIn from "./components/auth/Signin";
@@ -16,26 +16,6 @@ function App() {
   
       </Routes>
     </BrowserRouter>
-=======
-import './App.css'
-import SignIn from './components/auth/Signin';
-import './App.css';
-//import SignIn from './components/auth/Signin';
-import SignUp from './components/auth/Signup';
-import Notification from './pages/notifications';
-import Upload from './pages/upload';
-import Homepage from './pages/homepage';
-import NavBar from './pages/navbar';
-
-
-
-function App() {
-  return (
-    <div className="App">
-      <Homepage/>
-      {/* <SignUp/> */}
-    </div>
->>>>>>> Stashed changes
-  );
+  )
 }
 export default App
