@@ -25,7 +25,7 @@ const SignUp = () => {
         // stores userdata in the cloud firestore as a collection 
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        await addDoc(collection(db, "users"), {
+        await addDoc(collection(db, "users/" + user.uid + "/userData"), {
             uid: user.uid,
             email: user.email,
             username: username
