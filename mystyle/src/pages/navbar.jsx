@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import './navbar.css';
 
 //Emeveryone needs to do...
 // //npm install react-dom
 // import {Link} from 'react-router-dom';
-
-
-import './navbar.css';
-
 
 // // for some reason when this is called its not being displayed anymore -- currently being worked on
 // const NavBar = () => {
@@ -24,11 +21,11 @@ import './navbar.css';
 //   );
 // };
 
-
 // export default NavBar;
 
-
 // restarting the navbar to support the links
+
+
 
 export default function NavBar(){
  return <nav className="nav">
