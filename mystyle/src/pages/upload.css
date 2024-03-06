@@ -1,42 +1,47 @@
-body{
-  background-color:aliceblue;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  font-family: Poppins;
 }
-.wrapper{
+
+.wrapper-upload{
     margin-left:auto;
     margin-right:auto;
-    width:960px;
+    width: 1200px;;
+    background-color: whitesmoke
+    
 }
 /* "what are you wearing today?" */
-.header1{
+.what-are-you-wearing{
   text-align: center;
   margin-top: 36px;
 }
 /* "where are your clothes from?" */
-.header2{
+.clothes-from{
   text-align: right;
   padding: 10px;
-  margin-top: -560px;
-  margin-right: -75px;
+  margin-top: -440px;
+  margin-right: 100px;
   font-size: 30px;
 
 }
 /* All of the emojis */
-.emoji {
+.emoji-clothes {
   text-align: right;
   font-size: 60px;
   padding: 10px;
   margin-top: -5px;
-  margin-right: -15px;
+  margin-right: 150px;
 }
 /* the input boxes as well as the emojis */
 .clotheslinking {
   text-align: right;
   padding: 40px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 /* the input boxes */ 
-.input{
-  font-size: 28px;
+.input-clothes{
+  font-size: 30px;
   border: 3px solid rgb(0,0,0);
   border-radius: 10px;
 }
@@ -46,14 +51,14 @@ body{
 
 }
 /* the container for the photo */
-.photo{
-  width: 250px;
+.photo-outfit{
+  width: 300px;
   height: 350px;
   border: 10px solid rgb(0, 0, 0);
   border-radius: 15px;
   padding: 50px;
   margin-top: 50px;
-  margin-left: 80px;
+  margin-left: 150px;
   overflow: hidden;
   background-color: whitesmoke;
 
@@ -66,8 +71,8 @@ body{
 }
 /* the button to submit your outfit */ 
 .uploadfit {
-  margin-left: 800px;
-  margin-top: -100px;
-  font-size: 20px;
+  margin-left: 1000px;
+  margin-bottom: 25px;
+  font-size: 15px;
   border-radius: 10px;
 }
