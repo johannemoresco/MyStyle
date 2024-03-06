@@ -1,53 +1,67 @@
-import React, {useRef,useState} from "react";
-import { auth } from "../../firebase";
+import React, {useState} from "react";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import './Signup'; 
-//import {useRef, useState} from "react";
+import { addDoc, collection, query, getDocs, where } from "firebase/firestore";
+import { db } from "../../firebase";
+import { Link } from "react-router-dom";
+
+
+
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
-    // const [FirstName, setFirstName] = useState('');
-    // const [LastName, setLastName] = useState('');
+
 
     const auth = getAuth();
-    const signUp = (e) => {
+    const signUp = async (e) => {
         e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password, username)
-        .then((userCredential) => {
-            console.log(userCredential);
-        })
-        .catch((error) => {
-            console.log(error);
+
+        const validUsername = await checkUsername(username);
+        if (!validUsername) {
+            alert("Username is not available or contains special characters");
+            return;
+        }
+        // stores userdata in the cloud firestore as a collection 
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        await addDoc(collection(db, "users"), {
+            uid: user.uid,
+            email: user.email,
+            username: username
         });
+        alert("Account successfully created! Please log in.")
     };
 
-    function Images() {
-        return (
-            <>
-                <div className="image">
-                    <input type="file" name="file" onChange={handleImage} />
-                </div>
-                <div className="pfp">
-                    <button type="submit">Save Photo</button>
-                </div>
-            </>
-        );
-    }
-
-    const [image, setImage] = useState('')
-        function handleImage(e) 
-        {
-            console.log(e.target.files)
-            setImage(e.target.files[0])
+    function checkUsername(username) {
+        // check to make sure username doesnt have special characters using a regex 
+        const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
+        if (specialCharacters.test(username)) {
+            console.log("Username has special characters.")
+            return false
         }
-    return(
 
+        // check to make sure username is not already in the database 
+        const usernameQuery = query(collection(db, "users"), where("username", "==", username));
+        return getDocs(usernameQuery)
+        .then((querySnapshot) => {
+            if (querySnapshot.size > 0) {
+                return false; 
+            } else {
+                return true;
+            }
+        })
+        .catch((error) => {
+            console.error("Error checking username:", error);
+            return false; // Assume username is not available on error
+        });
+
+}
+    return(
         <div className="sign-up-container">
 
             <link rel="stylesheet" href = "SignUp.css"></link>
-            <Images/>
+
              
             <form onSubmit={signUp}>
 
@@ -59,9 +73,8 @@ const SignUp = () => {
                 </h2>
                 <div className="input-box">
                     <input 
-                        type="email" 
+                        type="text" 
                         placeholder="Enter your email" 
-                        value={email} 
                         onChange={(e) => setEmail(e.target.value)}
                         required 
                     />
@@ -70,52 +83,27 @@ const SignUp = () => {
                 <h2>Password must be a minimum 6 of characters.</h2>
                 <div className="input-box">
                     <input
-                        type="password" 
+                        type="text" 
                         placeholder="Enter a password" 
-                        value={password} 
                         onChange={(e) => setPassword(e.target.value)}
                         required 
                     />              
                 </div>
 
                 <h2>Username must not contain special characters. </h2>
-                {/* <em>Ex: "* , - , : , ; , ' , ! , = , + , / , ` , ~ "</em> */}
                 <div className="input-box">
                     <input
-                        type = "username"
+                        type = "text"
                         placeholder="Username"
-                        value= {username}
-                        onChange={(e) => setUsername(e.target)}
+                        onChange={(e) => setUsername(e.target.value)}
                         required
                     />
                 </div>
-
-                {/* <h2>First name</h2>
-                <div className="input-box">
-                    <input
-                        type="input-box"
-                        placeholder="First Name"
-                        value= {FirstName}
-                        onChange={(e) => setFirstName(e.target)}
-                        required
-                    />
-                </div> */}
-
-                {/* <h2>Last name</h2>
-                <div className="input-box">
-                    <input
-                        type="input-box"
-                        placeholder="Last Name"
-                        value= {LastName}
-                        onChange={(e) => setLastName(e.target)}
-                        required
-                    />
-                </div> */}
-
+            
                 <button type="submit" class = "btn">Sign Up</button>
 
                 <div class = "login-link">
-                    <p>Already have an account? <a href = "#">Login</a></p>
+                    <p>Already have an account? <Link to="/">Login</Link></p>
                 </div>
 
             </form>

@@ -1,23 +1,44 @@
 import React, { useState } from "react";
-import { auth } from "../../firebase";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { signInWithEmailAndPassword, getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+
 
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate();
+
     const auth = getAuth();
     const signIn = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log(userCredential);
+            setLoggedIn(true)
+
         })
         .catch((error) => {
             alert("Invalid username or password");
             console.log(error);
         });
     };
+
+    const forgotPassword = (e) => {
+        sendPasswordResetEmail(auth, email)
+        .then(() => {
+            alert("Password reset instructions have been sent to your email.")
+        })
+    .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage)
+    });
+    }
+
+    if(loggedIn) {
+        navigate("/home")
+    }
     return(
         <div className="sign-in-container">
             <form onSubmit={signIn}>
@@ -47,14 +68,13 @@ const SignIn = () => {
                 </div>
 
                 <div className="remember-forgot">
-                    <label><input type = "checkbox"/> Remember me</label>
-                    <a href = "#">Forgot Password</a>
+                    <a href = "#" onClick={forgotPassword}>Forgot Password?</a>
                 </div>
 
                 <button type="submit" class = "btn">Login</button>
 
                 <div class = "register-link">
-                    <p>Don't have an account? <a href = "#">Register</a></p>
+                    <p>Don't have an account? <Link to="/Signup">Register</Link></p>
                  </div>
 
                 
