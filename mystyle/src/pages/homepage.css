@@ -39,6 +39,8 @@
     cursor: pointer;
     color: white;
     margin-right: 10px; /* Add space in emojis */
+    font-size: 36px; /* Increase emoji size */
+
   }
  
   .clothing-item {
@@ -49,6 +51,8 @@
  
   .clothing-item .clothing-emoji {
     margin-right: 10px;
+    font-size: 36px; /* Increase emoji size */
+
   }
  
   .post-photo img {
