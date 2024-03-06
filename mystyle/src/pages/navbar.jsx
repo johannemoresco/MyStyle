@@ -29,11 +29,11 @@ import './navbar.css';
 
 export default function NavBar(){
  return <nav className="nav">
-   <a href="/" className="MyStyle-Title">MyStyle
+   <a href="/home" className="MyStyle-Title">MyStyle
    </a>
    <ul>
    <li>
-           <a href="/homepage">Home</a>
+           <a href="/home">Home</a>
        </li>
        <li>
            <a href="/upload">Upload</a>
