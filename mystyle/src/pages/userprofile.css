@@ -88,7 +88,7 @@ body {
     margin-top: 10px;
     margin-bottom: 5px;
     margin-left: 30px;
-    margin-right: 795px;
+    margin-right: 795px; /*was 795px*/
     text-align: left;
     border: 2px solid white;
     border-radius: 5px;
