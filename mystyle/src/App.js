@@ -7,6 +7,7 @@ import Homepage from "./pages/homepage";
 import Upload from "./pages/upload";
 import Notification from "./pages/notifications";
 import Userprofile from "./pages/userprofile";
+import sb from "./pages/sb";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/upload" element={<Upload/>} />
         <Route path="/notifications" element={<Notification/>} />
         <Route path="/profile" element={<Userprofile/>}/>
+        {/* <Route path="/search" element={<sb/>}/> */}
 
 
   
