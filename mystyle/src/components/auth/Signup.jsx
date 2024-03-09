@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { addDoc, collection, query, getDocs, where } from "firebase/firestore";
+import { addDoc, collection, query, getDocs, where, collectionGroup, getFirestore } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 import "../../pages/SignUp.css";
@@ -14,6 +14,7 @@ const SignUp = () => {
 
 
     const auth = getAuth();
+    const database = getFirestore();
     const signUp = async (e) => {
         e.preventDefault();
 
@@ -21,6 +22,14 @@ const SignUp = () => {
         if (!validUsername) {
             alert("Username is not available or contains special characters");
             return;
+        }
+
+        const validEmail = await checkEmail(email);
+        {
+            if(!validEmail) {
+                alert("An account is already associated with that email")
+                return;
+            }
         }
         // stores userdata in the cloud firestore as a collection 
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -32,8 +41,20 @@ const SignUp = () => {
         });
         alert("Account successfully created! Please log in.")
     };
+    async function checkEmail(email) {
+        // check to make sure email is not already in the database
+        const emailQuery = query(collectionGroup(database, "userData"), where("email", "==", email));
+        const querySnapshot = await getDocs(emailQuery);
+        if(querySnapshot.size > 0) {
+            return false;
+        }
+        else{
+            return true; 
+        }
 
-    function checkUsername(username) {
+    }
+
+    async function checkUsername(username) {
         // check to make sure username doesnt have special characters using a regex 
         const specialCharacters = /[!@#$%^&*(),.?":{}|<>]/;
         if (specialCharacters.test(username)) {
@@ -42,19 +63,14 @@ const SignUp = () => {
         }
 
         // check to make sure username is not already in the database 
-        const usernameQuery = query(collection(db, "users"), where("username", "==", username));
-        return getDocs(usernameQuery)
-        .then((querySnapshot) => {
-            if (querySnapshot.size > 0) {
-                return false; 
-            } else {
-                return true;
-            }
-        })
-        .catch((error) => {
-            console.error("Error checking username:", error);
-            return false; // Assume username is not available on error
-        });
+        const usernameQuery = query(collectionGroup(database, "userData"), where("username", "==", username));
+        const querySnapshot = await getDocs(usernameQuery);
+        if(querySnapshot.size > 0) {
+            return false;
+        }
+        else{
+            return true; 
+        }
 
 }
     return(
