@@ -35,9 +35,14 @@
     z-index:100000;
   }
   
+  @font-face {
+    font-family: "Brush";
+    src: url(BrushScript.ttf);
+  }
   
   .MyStyle-Title {
     font-size: 2rem;
+    font-family: Brush;
   }
   
   
