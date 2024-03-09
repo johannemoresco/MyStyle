@@ -63,7 +63,7 @@ const Homepage = () =>
   const [posts, setPosts] = useState([
     {
       id: 1,
-      username: '@Father_smallberg',
+      username: '@Hi',
       emojis: [
         { emoji: '😊', count: 0, clicked: false },
         { emoji: '🤔', count: 0, clicked: false },
