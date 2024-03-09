@@ -5,7 +5,6 @@ import SignIn from "./components/auth/Signin";
 import SignUp from "./components/auth/Signup";
 import Homepage from "./pages/homepage";
 import Upload from "./pages/upload";
-import Notification from "./pages/notifications";
 import Userprofile from "./pages/userprofile";
 import SearchApp from "./pages/SearchApp";
 
@@ -17,7 +16,6 @@ function App() {
         <Route path="/signup" element={<SignUp />} /> {}
         <Route path="/home" element={<Homepage/>} />
         <Route path="/upload" element={<Upload/>} />
-        <Route path="/notifications" element={<Notification/>} />
         <Route path="/profile" element={<Userprofile/>}/>
         <Route path="/search" element={<SearchApp/>}/>
       </Routes>

@@ -37,7 +37,7 @@
   
   @font-face {
     font-family: "Brush";
-    src: url(BrushScript.ttf);
+    src: "../public/BrushScript.ttf";
   }
   
   .MyStyle-Title {
