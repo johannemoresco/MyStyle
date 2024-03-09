@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './homepage.css';
 
-
 //import every page shouldddd have this to get the navigation
 import NavBar from './navbar';
-
 
 /*
 Basic overview of the homepage:
@@ -14,14 +12,11 @@ need ...
 - have a get live components to create the scrolling functionality
 - debug the navigation bar that hypothetically would work on every page if called
 
-
 - plan is the cap out the size of posts of users essentially the same layout as the one here, but in future
 will replace arbitrary variables with get-live functionalities once firebase is created
 
-
 FOR APP.js
 "
-
 
 import './App.css';
 import SignIn from './components/auth/Signin';
@@ -29,41 +24,31 @@ import SignUp from './components/auth/Signup';
 import Upload from './pages/upload'
 //import Homepage from './pages/homepage'
 
-
 //defining routes for navigation:
 import Homepage from './pages/homepage';
 import Search from './pages/search';
 import Userprofile from './pages/userprofile';
 import Notifications from './pages/notifications';
 
-
-
-
 //import Navbar from './components/Navbar';
 import Navbar from './pages/navbar';
-
 
 // tool to reroute page based on the user input
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-
 import React from 'react';
 "
 
-
 */
-
-
-
-
-
 
 const Homepage = () =>
 {
   const [posts, setPosts] = useState([
     {
       id: 1,
-      username: '@Hi',
+      username: '@Father_Smallberg',
+      intro: 'Your daily dose of fashion in style.',
+      motto: "Showcasing Style, One Outfit at a Time.",
       emojis: [
         { emoji: '😊', count: 0, clicked: false },
         { emoji: '🤔', count: 0, clicked: false },
@@ -72,6 +57,7 @@ const Homepage = () =>
         { emoji: '👍', count: 0, clicked: false },
       ],
       clothing: [
+        /* https://example.com/shirt*/
         { type: 'shirt', link: 'https://example.com/shirt' },
         { type: 'skirt', link: 'https://example.com/skirt' },
         { type: 'pants', link: 'https://example.com/pants' },
@@ -101,17 +87,10 @@ const Homepage = () =>
     return () => element.removeEventListener('scroll', handleScroll);
   }, []); // Empty dependency array means this effect runs once on mount
 
-
-
-
-
-
   const fetchMorePosts = async () => {
     // Function to fetch more posts from the database
     // Update your state with the new posts
   };
-
-
 
   const handleEmojiClick = (postId, emojiIndex) => {
     setPosts((prevPosts) =>
@@ -134,9 +113,6 @@ const Homepage = () =>
     );
   };
 
-
-
-
   // complete optional for future ?? #highly doubt
   const addComment = (postId, newComment) => {
     setPosts((prevPosts) => prevPosts.map(post => {
@@ -148,33 +124,16 @@ const Homepage = () =>
     }));
   };
 
-
-
-
   return (
     <div>
       <NavBar/>
-    {/* <NavBar/> WORKING ON DEBUGGING THE NAVIGATION PAGE WILL TEST --GUS*/}
       <main className="content">
         <section className="posts">
           {posts.map((post) => (
             <article key={post.id} className="post">
               <div className="post-container">
                 <div className="post-left">
-                  <div className="post-photo">
-                    <img src={post.photoUrl || "smallberg.jpeg"} alt="Post" />
-                  </div>
-                  <div className="emojis">
-                    {post.emojis.map((emojiData, index) => (
-                      <span key={index} onClick={() => handleEmojiClick(post.id, index)}>
-                        {emojiData.emoji} {emojiData.count}
-                      </span>
-
-                    ))}
-                  </div>
-                </div>
-                <div className="post-right">
-                  <h2 className="username">{post.username}</h2>
+                <h2 className="intro">{post.intro}</h2>
                   <div className="clothes">
                     {post.clothing.map((item, index) => {
                       let emoji;
@@ -199,9 +158,28 @@ const Homepage = () =>
                           <span className="clothing-emoji">{emoji}</span>
                           <a href={item.link} target="_blank" rel="noopener noreferrer">{item.link}</a>
                         </div>
+                        
                       );
                     })}
                   </div>
+                  <h2 className="motto">{post.motto}</h2>
+                
+                </div>
+                <div className="post-right">
+
+                <div className="post-photo">
+                    <img src={post.photoUrl || "smallberg.jpeg"} alt="Post" />
+                  </div>
+                  <h2 className="username">{post.username}</h2>
+                  <div className="emojis">
+                    {post.emojis.map((emojiData, index) => (
+                      <span key={index} onClick={() => handleEmojiClick(post.id, index)}>
+                        {emojiData.emoji} {emojiData.count}
+                      </span>
+
+                    ))}
+                  </div>
+
                 </div>
               </div>
             </article>
