@@ -15,6 +15,10 @@ import { addDoc, collection} from "firebase/firestore";
 import { db } from "../firebase";
 
 
+//import allowing timestamp feature for the posts:
+import { serverTimestamp } from 'firebase/firestore';
+// need to "npm install date-fns" -- formats timestamps
+
 
 const Upload = () => {
     const [image, setImage] = useState(null);
@@ -60,7 +64,11 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
         const uid = auth.currentUser.uid;
         addDoc(collection(db, "users", uid, "posts" ), {
             imageURL: imageUrl,
-            clothesData: inputData
+            clothesData: inputData,
+            // initialized likes as 0 when user uploads a new post
+            likes:0,
+            dislikes:0,
+            createdAt: serverTimestamp() // Add this line to include a timestamp
         }).then((docRef) => {
             console.log("Post added in firestore:", docRef.id);
         }).catch((error) => {

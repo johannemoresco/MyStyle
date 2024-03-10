@@ -50,10 +50,10 @@ const Homepage = () =>
       intro: 'Your daily dose of fashion in style.',
       motto: "Showcasing Style, One Outfit at a Time.",
       emojis: [
-        { emoji: '😊', count: 0, clicked: false },
-        { emoji: '🤔', count: 0, clicked: false },
-        { emoji: '😂', count: 0, clicked: false },
-        { emoji: '❤️', count: 0, clicked: false },
+        //{ emoji: '😊', count: 0, clicked: false },
+        //{ emoji: '🤔', count: 0, clicked: false },
+        //{ emoji: '😂', count: 0, clicked: false },
+        //{ emoji: '❤️', count: 0, clicked: false },
         { emoji: '👍', count: 0, clicked: false },
       ],
       clothing: [
