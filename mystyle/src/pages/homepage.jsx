@@ -1,198 +1,157 @@
 import React, { useState, useEffect } from 'react';
 import './homepage.css';
-
-//import every page shouldddd have this to get the navigation
 import NavBar from './navbar';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { format } from 'date-fns'; // for date formatting
+import { collection, getDocs, where, query, orderBy, limit, startAfter, doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+
 
 /*
-Basic overview of the homepage:
-need ...
-- create a basic user for people to load up the app
-      - need to store/retrieve emoji-count/posts/userID/clothinglinks
-- have a get live components to create the scrolling functionality
-- debug the navigation bar that hypothetically would work on every page if called
+Firestore
+│
+└─── users (collection)
+     │
+     └─── [User's UID] (document)
+          │
+          ├─── userData (subcollection)
+          │    └─── [Unique UserData ID] (document)
+          │         ├─── email: "user@example.com"
+          │         ├─── uid: "User's UID"
+          │         └─── username: "user123"
+          │
+          └─── posts (subcollection)
+               └─── [Unique Post ID] (document)
+                    ├─── clothesData
+                    │    ├─── shirt: "Brand A"
+                    │    ├─── pants: "Brand B"
+                    │    ├─── dress: "Brand C"
+                    │    └─── shoes: "Brand D"
+                    ├─── createdAt: Timestamp
+                    ├─── imageURL: "https://example.com/image.jpg"
+                    ├─── likes: Number
+                    └─── dislikes: Number
+*/ 
 
-- plan is the cap out the size of posts of users essentially the same layout as the one here, but in future
-will replace arbitrary variables with get-live functionalities once firebase is created
 
-FOR APP.js
-"
+//next steps:
 
-import './App.css';
-import SignIn from './components/auth/Signin';
-import SignUp from './components/auth/Signup';
-import Upload from './pages/upload'
-//import Homepage from './pages/homepage'
+// WHY IS FETCHING THE USERNAME NOT WORKING?
 
-//defining routes for navigation:
-import Homepage from './pages/homepage';
-import Search from './pages/search';
-import Userprofile from './pages/userprofile';
-import Notifications from './pages/notifications';
+// Figure out Overflow and pulling documents when scrolling 
 
-//import Navbar from './components/Navbar';
-import Navbar from './pages/navbar';
+// iterate through different users in firebase
 
-// tool to reroute page based on the user input
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import React from 'react';
-"
 
-*/
+const Homepage = () => {
 
-const Homepage = () =>
-{
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      username: '@Father_Smallberg',
-      intro: 'Your daily dose of fashion in style.',
-      motto: "Showcasing Style, One Outfit at a Time.",
-      emojis: [
-        //{ emoji: '😊', count: 0, clicked: false },
-        //{ emoji: '🤔', count: 0, clicked: false },
-        //{ emoji: '😂', count: 0, clicked: false },
-        //{ emoji: '❤️', count: 0, clicked: false },
-        { emoji: '👍', count: 0, clicked: false },
-      ],
-      clothing: [
-        /* https://example.com/shirt*/
-        { type: 'shirt', link: 'https://example.com/shirt' },
-        { type: 'skirt', link: 'https://example.com/skirt' },
-        { type: 'pants', link: 'https://example.com/pants' },
-        { type: 'shoes', link: 'https://example.com/shoes' },
-      ],
-      comments: [],
-    },
-  ]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [latestPost, setLatestPost] = useState(null);
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
-    const handleScroll = (event) => {
-      // Get the current scroll position and the height of the scrollable area
-      const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-  
-      // Check if we're at the bottom of the scrollable area (with some tolerance, e.g., 10px before the actual bottom)
-      if (scrollHeight - scrollTop <= clientHeight + 10) {
-        // Trigger fetching more posts
-        fetchMorePosts();
-      }
-    };
-  
-    // Add the event listener to the scrollable container
-    const element = document.querySelector('.content');
-    element.addEventListener('scroll', handleScroll);
-  
-    // Cleanup the event listener
-    return () => element.removeEventListener('scroll', handleScroll);
-  }, []); // Empty dependency array means this effect runs once on mount
 
-  const fetchMorePosts = async () => {
-    // Function to fetch more posts from the database
-    // Update your state with the new posts
-  };
+    //fetchin unique usernames 
+
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
+  
+    if (currentUser) {
+      // Reference to the userData subcollection for the current user
+      const userDataRef = collection(db, "users", currentUser.uid, "userData");
+      // Query the userData subcollection for documents where the uid field matches the current user's UID
+      const q = query(userDataRef, where("uid", "==", currentUser.uid));
+  
+  
+      getDocs(q).then(querySnapshot => {
+        const userDataDoc = querySnapshot.docs.find(doc => doc.data().uid === currentUser.uid);
+        if (userDataDoc) {
+          // If a document is found, update the state with the username
+          setUserInfo(userDataDoc.data());
+        } else {
+          console.log("User data not found");
+        }
+      }).catch(error => {
+        console.error("Error fetching user data:", error);
+      });
+    } else {
+      console.log("No user is currently logged in");
+    }
+  
+    // fetching post data:
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+  
+        // Fetch user document to get the username
+        const userRef = doc(db, "users", user.uid);
+        getDoc(userRef).then(docSnap => {
+          if (docSnap.exists()) {
+
+            // Update setUserInfo to include the username correctly
+            setUserInfo({ username: docSnap.data().username }); 
+          }
+        }).catch(error => {
+          console.error("Error fetching user data:", error);
+        });
+  
+        // Fetch the latest post
+        const postsRef = collection(db, "users", user.uid, "posts");
+        const q = query(postsRef, orderBy("createdAt", "desc"), limit(1));
+        getDocs(q).then(querySnapshot => {
+          if (!querySnapshot.empty) {
+            const postDoc = querySnapshot.docs[0];
+            setLatestPost(postDoc.data()); //this contains the necessary post data
+          } else {
+            console.log("No posts found for the user with UID:", user.uid);
+          }
+        }).catch(error => {
+          console.error("Error fetching latest post:", error);
+        });
+      } else {
+        console.log("No user is currently logged in");
+        setCurrentUser(null);
+        setUserInfo({});
+        setLatestPost(null);
+      }
+    });
+  }, []);
+  
 
   const handleEmojiClick = (postId, emojiIndex) => {
-    setPosts((prevPosts) =>
-      prevPosts.map((post) => {
-        if (post.id === postId) {
-          const newEmojis = post.emojis.map((emoji, index) => {
-            if (index === emojiIndex) {
-              return {
-                ...emoji,
-                count: emoji.clicked ? emoji.count - 1 : emoji.count + 1,
-                clicked: !emoji.clicked
-              };
-            }
-            return emoji;
-          });
-          return { ...post, emojis: newEmojis };
-        }
-        return post;
-      })
-    );
-  };
-
-  // complete optional for future ?? #highly doubt
-  const addComment = (postId, newComment) => {
-    setPosts((prevPosts) => prevPosts.map(post => {
-      if (post.id === postId) {
-        // Make sure to create a new object for the post and a new array for comments
-        return { ...post, comments: [...post.comments, newComment] };
-      }
-      return post;
-    }));
+    // Function body
   };
 
   return (
+
     <div>
       <NavBar/>
       <main className="content">
-        <section className="posts">
-          {posts.map((post) => (
-            <article key={post.id} className="post">
-              <div className="post-container">
-                <div className="post-left">
-                <h2 className="intro">{post.intro}</h2>
-                  <div className="clothes">
-                    {post.clothing.map((item, index) => {
-                      let emoji;
-                      switch (item.type) {
-                        case 'shirt':
-                          emoji = '👕';
-                          break;
-                        case 'skirt':
-                          emoji = '👗';
-                          break;
-                        case 'pants':
-                          emoji = '👖';
-                          break;
-                        case 'shoes':
-                          emoji = '👟';
-                          break;
-                        default:
-                          emoji = '';
-                      }
-                      return (
-                        <div key={index} className="clothing-item">
-                          <span className="clothing-emoji">{emoji}</span>
-                          <a href={item.link} target="_blank" rel="noopener noreferrer">{item.link}</a>
-                        </div>
-                        
-                      );
-                    })}
-                  </div>
-                  <h2 className="motto">{post.motto}</h2>
-                
-                </div>
-                <div className="post-right">
-
-                <div className="post-photo">
-                    <img src={post.photoUrl || "smallberg.jpeg"} alt="Post" />
-                  </div>
-                  <h2 className="username">{post.username}</h2>
-                  <div className="emojis">
-                    {post.emojis.map((emojiData, index) => (
-                      <span key={index} onClick={() => handleEmojiClick(post.id, index)}>
-                        {emojiData.emoji} {emojiData.count}
-                      </span>
-
-                    ))}
-                  </div>
-
-                </div>
-              </div>
-            </article>
-          ))}
-        </section>
+        {latestPost ? (
+          <div className="post">
+            {/* Display the username */}
+            <h2>{userInfo.username || 'User'}'s Latest Post</h2>
+            <img src={latestPost.imageURL} alt="Latest Post" />
+            <div className="clothes-data">
+              <p>👕: {latestPost.clothesData.shirt}</p>
+              <p>👖: {latestPost.clothesData.pants}</p>
+              <p>👗: {latestPost.clothesData.dress}</p>
+              <p>👟: {latestPost.clothesData.shoes}</p>
+            </div>
+            <div className="engagement">
+              <p>👍 {latestPost.likes}</p>
+              <p>👎 {latestPost.dislikes}</p>
+            </div>
+            <p>Posted on: {latestPost.createdAt.toDate().toString()}</p>
+          </div>
+        ) : (
+          <p>Loading latest post...</p>
+        )}
       </main>
-      </div>
+    </div>
   );
- 
-
-
 };
 
-
 export default Homepage;
-
