@@ -134,17 +134,19 @@ const Homepage = () => {
             {/* Display the username */}
             <h2>{userInfo.username || 'User'}'s Latest Post</h2>
             <img src={latestPost.imageURL} alt="Latest Post" />
+            <div className="engagement">
+              <p>👍 {latestPost.likes}</p>
+              <p>👎 {latestPost.dislikes}</p>
+            </div>
             <div className="clothes-data">
               <p>👕: {latestPost.clothesData.shirt}</p>
               <p>👖: {latestPost.clothesData.pants}</p>
               <p>👗: {latestPost.clothesData.dress}</p>
               <p>👟: {latestPost.clothesData.shoes}</p>
             </div>
-            <div className="engagement">
-              <p>👍 {latestPost.likes}</p>
-              <p>👎 {latestPost.dislikes}</p>
+            <div className = "Time">
+              <p>Posted on: {latestPost.createdAt.toDate().toString()}</p>
             </div>
-            <p>Posted on: {latestPost.createdAt.toDate().toString()}</p>
           </div>
         ) : (
           <p>Loading latest post...</p>
