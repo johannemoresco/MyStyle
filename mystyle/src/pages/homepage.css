@@ -1,160 +1,75 @@
-/* .post-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-} */
-
-.post-container {
-  display: flex;
-  width: 1000px;
-  height: 550px;
-  background: rgb(255, 255, 255);
-  border: 2px solid rgba(0, 0, 0, 0.034);
-  background-color: blur(20px);
-  backdrop-filter: blur(20px); 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 30);
-  color: #000000;
-  border-radius: 10px;
-  padding: 30px 40px;
-  margin-top: 125px
-
-  }
-
 .intro{
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 45px;
-    color: rgb(0, 0, 0); /* Sets the username text color to white */
-    font-family: Calibri, sans-serif;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 45px;
+  color: rgb(0, 0, 0); /* Sets the username text color to white */
+  font-family: Calibri, sans-serif;
 }
 
-.btn{
-  width: 50%;
-  height: 45px;
-  background: #000000;
-  border: none;
-  outline: none;
-  border-radius: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  font-size: 16px;
-  color: #ffffff;
-  font-weight: 600;
-  margin-left: 75px;
-  margin-top: 0px;
+h2{
+margin-top: -10px;
+color: #000000;
 }
 
+.post {
+display: block;
+width: 1000px;
+height: 525px;
+background: rgb(255, 255, 255);
+border: 2px solid rgba(0, 0, 0, 0.034);
+background-color: blur(20px);
+backdrop-filter: blur(20px); 
+box-shadow: 0 0 10px rgba(0, 0, 0, 30);
+color: #000000;
+border-radius: 10px;
+padding: 30px 40px;
+margin-top: 100px;
 
-  .post-left {
-
-    flex: 1;
-    padding-right: 50px;
-  
-  }
- 
-
-
-  .post-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers children horizontally */
-
-
-  }
- 
-
-
-  .username {
-    margin-top: 10px;
-    margin-bottom: 25px;
-    color: rgb(0, 0, 0); /* Sets the username text color to white */
-    font-family: Calibri, sans-serif;
-  }
-
-  .motto
-  {
-    margin-top: 50px;
-    margin-bottom: 25px;
-    color: rgb(0, 0, 0); /* Sets the username text color to white */
-    font-family: Calibri, sans-serif;
-    font-weight: 100;
-    font-size: 15px;
-    margin-left: 50px;
-  }
-
-
-  .emojis {
-   
-        display: flex;
-        justify-content: center; /* Centers the emoji reactions */
-        flex-wrap: wrap; /* emojis to wrap onto the next line if needed */
-        width: 100%; /* Ensures the emoji container is wide as parent */
-        margin-top: 5px;
-
-     
 }
- 
-  .emojis span {
-    cursor: pointer;
-    color: rgb(0, 0, 0);
-    margin-right: 10px; /* Add space in emojis */
-    font-size: 36px; /* Increase emoji size */
-    font-family: Calibri, sans-serif;
 
-  }
- 
-  .clothing-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+.post img {
+  width: 30%; /* Set width */
+  height: auto; /* Set height */
+  object-fit: cover; /* cover the area without stretching the image */
+  border-radius: 9px; /* rounded corners */
+  margin-bottom: 10px; /* Space between photo and emoji reactions */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 10);
+  margin-left: 0 auto;
+  margin-top: 15px;
+  display: block;
+  text-align: left;
+}
 
-  }
- 
-  .clothing-item .clothing-emoji {
-    margin-right: 10px;
-    font-size: 36px; /* Increase emoji size */
+.clothes-data
+{
+  /* text-align: right; */
+  margin-top: -350px;
+  margin-left: 300px;
+  font-size: 40px;
+}
 
-  }
- 
-  .post-photo img {
-    width: 450px; /* Set width */
-    height: 350px; /* Set height */
-    object-fit: cover; /* cover the area without stretching the image */
-    border-radius: 9px; /* rounded corners */
-    margin-bottom: 10px; /* Space between photo and emoji reactions */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 10);
-    margin-top: 10px;
-  }
+.Time p
+{
+  font-size: 20px;
+  margin-top: 50px;
+  margin-left: 300px;
+  /* font-weight: bold; */
+}
 
+.engagement p{
+font-size: 30px;
+display: inline-block;
+margin-left: 50px;
+margin-top: 10px;
+}
 
-  .content {
-    height: 100vh;
-    overflow-y: auto;
-    position: relative;
-  }
+.content {
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+}
 
-
-
-  /*formatting the posts into main content and will repeat for every user post*/
-  .main-content {
-    padding-top: 60px; /* This should be at least as tall as your navbar */
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
+/*formatting the posts into main content and will repeat for every user post*/
+.main-content {
+  padding-top: 60px; /* This should be at least as tall as your navbar */
+}
