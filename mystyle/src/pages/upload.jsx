@@ -65,6 +65,18 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
         }
         const auth = getAuth()
         const uid = auth.currentUser.uid;
+        addDoc(collection(db, "posts"), {
+            imageURL: imageUrl,
+            clothesData: inputData,
+            likes: 0,
+            dislikes: 0,
+            createdAt: serverTimestamp(),
+            postedBy: uid
+        }).then((docRef) => {
+            console.log("Uploaded in posts")
+        }).catch((error) => {
+            console.error("error adding in the posts db: ", error)
+        });
         addDoc(collection(db, "users", uid, "posts" ), {
             imageURL: imageUrl,
             clothesData: inputData,
@@ -92,7 +104,8 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
             <h1 className='what-are-you-wearing'> What are you wearing today? 👀 </h1>
 
             <div className='uploadimage'>
-                <button onClick={uploadImage} className="image-view">Upload Image</button>
+            <button onClick={uploadImage} className="image-view">Upload Image</button>
+            <div className='input-image'>
                 <input
                 type="file"
                 name="file"
@@ -107,6 +120,7 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
                     }
                 }}
                 />
+                 </div>
             </div>
 
            
