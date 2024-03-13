@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 body {
-    background-color: lavenderblush;
     height: auto;
     background: url("../../public/Background.png");
 }
@@ -13,48 +12,49 @@ body {
 .wrapper {
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
 }
 
 .profile-header {
     color: white;
-    display: flex;
-    align-items: center;
+/*    display: flex;
+*/    align-items: center;
     text-align: center;
 }
 
 .profile-top-three {
-    /*display: flex;*/
     align-items: center;
-    color: white;
     display: grid;
-    /*grid-template-columns: repeat(auto-fill, minmax(300,1fr));*/ /* Three equal-width columns */
-    gap: 10px; /* Adjust the gap between items */
+    grid-template-columns: repeat(3, 1fr);  /*Three equal-width columns */
 }
 
     .profile-top-three img {
-        color: white;
+        color: #333;
         margin-right: 5px;
         margin-left: 5px;
-        /*width: 300px;
-        height: 300px;*/
-
-        width: 100%;
-        height: auto;
+        width: 300px;
+        height: 300px;
         margin-top: 20px;
         object-fit: cover;
         margin-left: 5px;
-        /*max-width: 100%;*/
         border-style: solid;
-        border-width: 25px 0px 0px 0px; /* 25px top, 10px right, 4px bottom and 35px left */
+        border-width: 25px 3px 3px 3px; /* 25px top, 10px right, 4px bottom and 35px left */
         border-radius: 4%;
     }
 
 .image-container {
-    width: 100%; /* Ensure the image takes full width of its container */
-    overflow: hidden; /* Hide any overflow to prevent stretching */
+    width: auto;  /*Ensure the image takes full width of its container */
+    overflow: hidden;  /*Hide any overflow to prevent stretching */
 }
 
+.p {
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    margin-right: 800px;
+    align-content: center;
+    align-items: center;
+}
 
 
 
@@ -64,11 +64,13 @@ body {
     text-align: center;
     margin: 50px 115px 50px 115px;
     font-size: 60px;
-    border: 2px solid white;
+    border: 3px solid white;
     border-radius: 5px;
     background-color: #333;
 }
 
+
+/* signout button */
 .friends {
     color: white;
     font-size: 20px;
@@ -82,10 +84,7 @@ body {
     background-color: #333;
 }
 
-.little-margin {
-    margin-top: 20px;
-}
 
-.bottom-space {
-    margin-top: 50px;
-}
+
+
+
