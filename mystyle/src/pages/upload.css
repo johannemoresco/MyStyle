@@ -1,164 +1,145 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
-
 * {
-font-family: Poppins;
+  font-family: Poppins;
 }
-
 
 .wrapper-upload
 {
-display: block;
-width: 1000px;
-height: 575px;
-background: rgb(255, 255, 255);
-border: 2px solid rgba(0, 0, 0, 0.034);
-background-color: blur(20px);
-backdrop-filter: blur(20px);
-box-shadow: 0 0 10px rgba(0, 0, 0, 30);
-color: #000000;
-border-radius: 10px;
-padding: 30px 40px;
-margin-top: 5px;
+  display: block;
+  width: 1000px;
+  height: 575px;
+  background: rgb(255, 255, 255);
+  border: 2px solid rgba(0, 0, 0, 0.034);
+  background-color: blur(20px);
+  backdrop-filter: blur(20px); 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 30);
+  color: #000000;
+  border-radius: 10px;
+  padding: 30px 40px;
+  margin-top: 5px;
 }
-
 
 /* "what are you wearing today?" */
 .what-are-you-wearing
 {
-text-align: center;
-margin-top: 8px;
-font-size: 25px;
-font-weight: normal;
-top: 50px;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 25px;
+  font-weight: normal;
+  top: 50px;
 }
-
 
 .uploadimage
 {
-text-align: center;
+  text-align: center;
 }
-
 
 .uploadimage input
 {
-display: inline-block;
-text-align: center;
-margin-top: 1px;
+  display: inline-block;
+  text-align: center;
+  margin-top: 1px;
 }
-
 
 /* "where are your clothes from?" */
 .clothes-from
 {
-text-align: right;
-margin-top: -420px;
-font-size: 25px;
-margin-right: 80px;
-font-weight: normal;
-
+  text-align: right;
+  margin-top: -420px;
+  font-size: 25px;
+  margin-right: 80px;
+  font-weight: normal;
 
 }
-
 
 /* All of the emojis */
-.emoji-clothes
+.emoji-clothes 
 {
-font-size: 36px;
-margin-left: 0px;
-margin-top: -5px;
-text-align: left;
-width: 420px;
-
+  font-size: 36px;
+  margin-left: 0px;
+  margin-top: -5px;
+  text-align: left;
+  width: 420px;
 
 }
-
 
 .fits
 {
-font-size: 36px;
-margin-top: 20px;
-margin-bottom: 20px;
-margin-left: 325px;
-top:-50px;
+  font-size: 36px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 325px;
+  top:-50px;
 }
-
 
 /* the input boxes as well as the emojis */
-.clotheslinking
+.clotheslinking 
 {
-text-align: left;
-margin-top: 20px;
-margin-left: 15px;
+  text-align: left;
+  margin-top: 20px;
+  margin-left: 15px;
 }
 
-
-/* the input boxes */
+/* the input boxes */ 
 .input-clothes
 {
-font-size: 15px;
-height: 5px;
-margin-top: 10px;
-margin-left: 400px;
-text-align: left;
-position: relative;
-top: -300px;
+  font-size: 15px;
+  height: 5px;
+  margin-top: 10px;
+  margin-left: 400px;
+  text-align: left;
+  position: relative;
+  top: -300px;
 
 
 
-
-
-
-width: 450px;
-background: rgb(255, 253, 253);
-border: 2px solid rgba(0, 0, 0, 0.034);
-border-color: #000000;
-color: #000000;
-border-radius: 40px;
-padding: 30px 40px;
+  width: 450px;
+  background: rgb(255, 253, 253);
+  border: 2px solid rgba(0, 0, 0, 0.034);
+  border-color: #000000;
+  color: #000000;
+  border-radius: 40px;
+  padding: 30px 40px;
 }
-
 
 .input-box
 {
-height: 40px;
-width: 500px;
-margin-top: -110px;
-margin-left: 10px;
-text-align: right;
+  height: 40px;
+  width: 500px;
+  margin-top: -110px;
+  margin-left: 10px;
+  text-align: right;
 }
 /* the buttons to upload and submit the image user chooses */
-
 
 /* the container for the photo */
 .photo-outfit
 {
-width: 300px;
-height: 350px;
-border: 10px solid rgb(0, 0, 0);
-border-radius: 15px;
-padding: 50px;
-text-align: left;
-overflow: hidden;
-background-color: whitesmoke;
-margin-top: 25px;
+  width: 300px;
+  height: 350px;
+  border: 10px solid rgb(0, 0, 0);
+  border-radius: 15px;
+  padding: 50px;
+  text-align: left;
+  overflow: hidden;
+  background-color: whitesmoke;
+  margin-top: 25px;
 }
-
 
 /* the actual photo */
-.photo-img
+.photo-img 
 {
-width: 100%;
-height: 100%;
-object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-
-/* the button to submit your outfit */
-.uploadfit
+/* the button to submit your outfit */ 
+.uploadfit 
 {
-font-size: 15px;
-border-radius: 30px;
-margin-top: 10px;
-margin-left: 575px;
+  font-size: 15px;
+  border-radius: 30px;
+  margin-top: 15px;
+  margin-left: 80px;
 }
