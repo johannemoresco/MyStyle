@@ -7,6 +7,7 @@ import Homepage from "./pages/homepage";
 import Upload from "./pages/upload";
 import Userprofile from "./pages/userprofile";
 import SearchApp from "./pages/SearchApp";
+import Otherprofile from "./pages/otherprofile";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Route path="/home" element={<Homepage/>} />
         <Route path="/upload" element={<Upload/>} />
         <Route path="/profile" element={<Userprofile/>}/>
-        <Route path="/search" element={<SearchApp/>}/>
+        <Route path="/search" element={<SearchApp />} />
+        <Route path="/otherprofile/:id" element={<Otherprofile />} />
       </Routes>
     </BrowserRouter>
   )
