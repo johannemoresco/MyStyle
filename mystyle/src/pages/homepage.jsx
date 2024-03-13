@@ -55,6 +55,14 @@ const Homepage = () => {
   }, []);
 
 
+    // access other user profile logic:
+    /////////////////////////////////////////////////////////////////////////
+    const handleProfileClick = async () => {
+        const pathName = userInfo.uid;
+        window.location.href = `/otherprofile/${pathName}`
+    };
+
+
   //like logic:
   /////////////////////////////////////////////////////////////////////////
 
@@ -181,8 +189,8 @@ const Homepage = () => {
       <NavBar/>
       <main className="content">
         {latestPost ? (
-          <div className="post">
-            <h2>@{userInfo.username || 'User'}'s Latest Post</h2>
+            <div className="post" >
+            <h2 onClick={handleProfileClick}>@{userInfo.username || 'User'}'s Latest Post</h2>
 
             <div className='motto'>
             <p>Showcasing Style, One Outfit at a Time.</p>
