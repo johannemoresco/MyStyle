@@ -75,9 +75,13 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
             console.error("Error adding doc: ", error)
         });
     };
-    return(
+    return (
+        <div className="wrapper">
+        <NavBar/>
+        
+        
         <div className='wrapper-upload'>
-            <NavBar/>
+            
             <link rel="stylesheet" href="./upload.css"></link>
 
             <h1 className='what-are-you-wearing'> What are you wearing today? 👀 </h1>
@@ -150,6 +154,7 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
                 </div>
             </div>
             
+            </div>
         </div>
 );
 }
