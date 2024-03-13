@@ -4,7 +4,7 @@ import { SearchBar } from "./SearchComponents/SearchBar";
 import NavBar from './navbar';
 
 function SearchApp() {
-    const [results, setResults] = useState([]);
+    const [setResults] = useState([]);
 
   return (
     
