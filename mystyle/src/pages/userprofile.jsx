@@ -146,7 +146,7 @@ const Userprofile = () => {
                     </div>
                 ) : (
                     <div>
-                        <p>YOU ARE BAD AT HAVING YOUR POSTS RENDER</p>
+                        <p>YOU ARE BAD AT HAVING YOUR POSTS RENDER WHY OH WHYYYY</p>
                     </div>
 
                 )}
