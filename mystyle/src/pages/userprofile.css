@@ -3,6 +3,7 @@
 body {
     background-color: lavenderblush;
     height: auto;
+    background: url("../../public/Background.png");
 }
 
 * {
@@ -12,7 +13,7 @@ body {
 .wrapper {
     margin-left: auto;
     margin-right: auto;
-    width: 950px;
+    width: 1000px;
 }
 
 .profile-header {
@@ -22,32 +23,24 @@ body {
     text-align: center;
 }
 
-    .profile-header img {
-        margin-right: 5px;
-        width: 275px;
-        height: 275px;
-        padding: 50px;
-        margin-top: 20px;
-        object-fit: cover;
-        margin-left: 20px;
-        margin-right: auto;
-        border-radius: 50%;
-        max-width: 100%;
-    }
-
 .profile-top-three {
-    display: flex;
+    /*display: flex;*/
     align-items: center;
     color: white;
+    display: grid;
+    /*grid-template-columns: repeat(auto-fill, minmax(300,1fr));*/ /* Three equal-width columns */
+    gap: 10px; /* Adjust the gap between items */
 }
 
     .profile-top-three img {
         color: white;
         margin-right: 5px;
         margin-left: 5px;
-        width: 300px;
-        height: 300px;
-        /*padding: 30px;*/ /*padding: 30px;*/
+        /*width: 300px;
+        height: 300px;*/
+
+        width: 100%;
+        height: auto;
         margin-top: 20px;
         object-fit: cover;
         margin-left: 5px;
@@ -57,18 +50,12 @@ body {
         border-radius: 4%;
     }
 
-.profile-rest-of-images img {
-    margin-right: 5px;
-    margin-left: 5px;
-    width: 300px;
-    height: 300px;
-    margin-top: 20px;
-    object-fit: cover;
-    margin-left: 5px;
-    max-width: 100%;
-    border-radius: 10%;
-    /*display: flex;*/
+.image-container {
+    width: 100%; /* Ensure the image takes full width of its container */
+    overflow: hidden; /* Hide any overflow to prevent stretching */
 }
+
+
 
 
 /* username on da page */
@@ -88,7 +75,7 @@ body {
     margin-top: 10px;
     margin-bottom: 5px;
     margin-left: 30px;
-    margin-right: 795px; /*was 795px*/
+    margin-right: 795px;
     text-align: left;
     border: 2px solid white;
     border-radius: 5px;
@@ -102,17 +89,3 @@ body {
 .bottom-space {
     margin-top: 50px;
 }
-
-/*img {
-    width: 250px;
-    height: 250px;
-    padding: 50px;
-    margin-top: 20px;
-    object-fit: cover;
-    margin-left: 20px;
-    margin-right: auto;
-    border-radius: 50%;
-    max-width: 100%;
-}*/
-
-
