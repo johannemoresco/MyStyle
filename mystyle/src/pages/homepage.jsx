@@ -183,16 +183,25 @@ const Homepage = () => {
         {latestPost ? (
           <div className="post">
             <h2>@{userInfo.username || 'User'}'s Latest Post</h2>
-            <img src={latestPost.imageURL} alt="Latest Post" className="post-image" />
+
+            <div className='motto'>
+            <p>Showcasing Style, One Outfit at a Time.</p>
+          </div>
+
+            <div className='photo-outfit'>
+              <img src={latestPost.imageURL} alt="Latest Post" className="post-image" />
+            </div>
+            
             <div className="engagement">
               <p onClick={handleLike}>👍 {latestPost.likes}</p>
               <p onClick={handleDislike}>👎 {latestPost.dislikes}</p>
             </div>
+            
             <div className="clothes-data">
-              <p>👕: {latestPost.clothesData.shirt}</p>
-              <p>👖: {latestPost.clothesData.pants}</p>
-              <p>👗: {latestPost.clothesData.dress}</p>
-              <p>👟: {latestPost.clothesData.shoes}</p>
+              <p>👕 - {latestPost.clothesData.shirt}</p>
+              <p>👖 - {latestPost.clothesData.pants}</p>
+              <p>👗 - {latestPost.clothesData.dress}</p>
+              <p>👟 - {latestPost.clothesData.shoes}</p>
             </div>
             {latestPost.createdAt && (
               <div className="Time">
@@ -201,7 +210,11 @@ const Homepage = () => {
             )}
           </div>
         ) : (
-          <p>Loading latest post...</p>
+          <div className='loading'>
+            <p>Loading latest post...</p>
+          </div>
+
+          
         )}
       </main>
     </div>

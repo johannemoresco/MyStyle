@@ -92,6 +92,7 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
             <h1 className='what-are-you-wearing'> What are you wearing today? 👀 </h1>
 
             <div className='uploadimage'>
+                <button onClick={uploadImage} className="image-view">Upload Image</button>
                 <input
                 type="file"
                 name="file"
@@ -106,8 +107,11 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
                     }
                 }}
                 />
-                <button onClick={uploadImage}>Submit</button>
             </div>
+
+           
+                
+            
 
             <div className='photo-outfit'>
                 <img src={imageUrl} alt="Today's outfit." className='photo-img'/>
@@ -157,7 +161,7 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
                 
             </div>
             <div className = "button-to-upload">
-            <button onClick= {uploadPost} className='uploadfit'>Share my outfit!</button>
+                <button onClick= {uploadPost} className='uploadfit'>Share my outfit!</button>
             </div>
             
             </div>

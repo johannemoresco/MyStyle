@@ -7,14 +7,15 @@
 }
 
 h2{
-margin-top: -10px;
+margin-top: 5px;
+margin-bottom: -10px;
 color: #000000;
 }
 
 .post {
 display: block;
-width: 1000px;
-height: 525px;
+width: 925px;
+height: 540px;
 background: rgb(255, 255, 255);
 border: 2px solid rgba(0, 0, 0, 0.034);
 background-color: blur(20px);
@@ -24,35 +25,63 @@ color: #000000;
 border-radius: 10px;
 padding: 30px 40px;
 margin-top: 100px;
-
 }
 
-.post img {
-  width: 30%; /* Set width */
-  height: auto; /* Set height */
-  object-fit: cover; /* cover the area without stretching the image */
-  border-radius: 9px; /* rounded corners */
-  margin-bottom: 10px; /* Space between photo and emoji reactions */
+
+.photo-outfit
+{
+  width: 300px;
+  height: 350px;
+  border: 10px solid rgb(0, 0, 0);
+  border-radius: 15px;
+  padding: 50px;
+  text-align: left;
+  overflow: hidden;
+  background-color: whitesmoke;
+  margin-top: 15px;
+}
+
+.post img 
+{
+  /* width: 30%; 
+  height: auto; 
+  object-fit: cover; 
+  border-radius: 9px; 
+  margin-bottom: 10px; 
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 10);
   margin-left: 0 auto;
   margin-top: 15px;
   display: block;
-  text-align: left;
+  text-align: left; */
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .clothes-data
 {
   /* text-align: right; */
-  margin-top: -250px;
-  margin-left: 300px;
+  margin-top: -375px;
+  margin-left: 350px;
   font-size: 40px;
+
+
+  width: 450px;
+  background: rgb(255, 253, 253);
+  border: 2px solid rgba(0, 0, 0, 0.034);
+  border-color: #000000;
+  color: #000000;
+  border-radius: 40px;
+  padding: 30px 40px;
 }
 
 .Time p
 {
   font-size: 20px;
-  margin-top: 50px;
-  margin-left: 300px;
+  margin-top: 30px;
+  margin-left: 350px;
+  text-align: right;
   /* font-weight: bold; */
 }
 
@@ -60,7 +89,7 @@ margin-top: 100px;
 font-size: 30px;
 display: inline-block;
 margin-left: 50px;
-margin-top: 10px;
+margin-top: 15px;
 }
 
 .content {
@@ -72,4 +101,24 @@ margin-top: 10px;
 /*formatting the posts into main content and will repeat for every user post*/
 .main-content {
   padding-top: 60px; /* This should be at least as tall as your navbar */
+}
+
+.loading
+{
+  background-color: white;
+  border-radius: 10px;
+  height: 25px;
+  width: 180px;
+  text-align: center;
+}
+
+.motto p{
+  margin-top: -15px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  color: rgb(0, 0, 0); /* Sets the username text color to white */
+  font-family: Calibri, sans-serif;
+  margin-right: 45px;
+  text-align: right;
+  top: 1000px;
 }
