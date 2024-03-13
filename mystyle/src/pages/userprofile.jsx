@@ -1,33 +1,22 @@
 // BEING DONE BY SYDNEY
 
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-import { getDocs, query, orderBy, collection, collectionGroup, where } from 'firebase/firestore';
+import { getDocs, query, orderBy, collection, where } from 'firebase/firestore';
 import { db } from "../firebase";
 import React, { useEffect, useState } from "react";
 import NavBar from './navbar';
 import './userprofile.css'
 
 
-
-
-
-
-
-
 const Userprofile = () => {
 
     const [posts, setPosts] = useState([]); // will hold user's posts
-    const [userInfo, setUserInfo] = useState({});
-    //const auth = getAuth();
-    // const currentUser = auth.currentUser;
-    const [currentUser, setCurrentUser] = useState(null);
-    //setIAmUser(true);
-
-    // logs out user, brings them back to sign in page
+    const [userInfo, setUserInfo] = useState({}); // holds the fields in user
+    const [currentUser, setCurrentUser] = useState(null); // more for mental housekeeping
     function LogOut() {
         const handLogOut = () => {
             const auth = getAuth();
-            signOut(auth)
+            signOut(auth) 
                 .then(() => {
                     // Redirect to home page after successful logout
                     window.location.href = "/";
@@ -45,16 +34,13 @@ const Userprofile = () => {
     }
 
     const fetchUserDataAndPosts = async () => {
-        const auth = getAuth();
-        const currentUser = getAuth().currentUser;
-        console.log("I got here baybee");
-        console.log(auth);
 
-        if (currentUser/* && currentUser.uid*/) {
-            console.log("did we go all the way or was it just a dream");
+        const currentUser = getAuth().currentUser;
+
+
+        if (currentUser && currentUser.uid) {
             try {
                 // fetch user data
-                console.log("i tried");
                 const usersDataRef = collection(db, "users", currentUser.uid, "userData");
                 const usersDataQuery = query(usersDataRef, where("uid", "==", currentUser.uid));
                 const userDataSnapshot = await getDocs(usersDataQuery);
@@ -76,62 +62,6 @@ const Userprofile = () => {
             }
         }
     };
-
-    /*console.log(auth);
-    console.log("I am auth before useffect");*/
-   /* useEffect(() => {
-        *//*       const auth = getAuth();
-               if (auth.currentUser.uid) {       
-       
-                   // fetch user data
-                   const usersDataRef = collection(db, "users", auth.currentUser.uid, "userData");
-                   const usersDataQuery = query(usersDataRef, where("uid", "==", auth.currentUser.uid));
-       
-                   getDocs(usersDataQuery).then(querySnapshot => {
-                       const userDataDocument = querySnapshot.docs.find(doc => doc.data().uid === auth.currentUser.uid);
-                       if (userDataDocument) {
-                           setUserInfo(userDataDocument.data());
-                       } else {
-                           console.log("user data not found");
-                       }
-                   }).catch(error => {
-                       console.error("error fetching user data");
-                       console.log("wowza");
-                   });
-       
-                   // fetch user posts
-       
-                   const postsRef = collection(db, "users", auth.currentUser.uid, "posts");
-                   const postsQuery = query(postsRef, orderBy("createdAt", "desc"));
-       
-                   getDocs(postsQuery).then(querySnapshot => {
-                       const fetchedPosts = querySnapshot.docs.map(doc => doc.data());
-                       setPosts(fetchedPosts);
-                   }).catch(error => {
-                       console.error("error fetching post");
-                   });
-       
-               }*//*
-
-
-
-        await fetchUserDataAndPosts();
-
-
-
-    }, [iAmUser]);*/
-
-    /*useEffect({ // Add async keyword here
-        await fetchUserDataAndPosts(); // Use await here
-    }, [iAmUser]);*/
-
-   /* useEffect(() => {
-        const fetchData = async () => {
-            await fetchUserDataAndPosts();
-        };
-
-        fetchData();
-    }, [iAmUser]);*/
 
     useEffect(() => {
         const auth = getAuth();
@@ -169,7 +99,7 @@ const Userprofile = () => {
                     </div>
                 ) : (
                     <div>
-                        <div className="p">YOU ARE BAD AT HAVING YOUR POSTS RENDER WHY OH WHYYYY</div>
+                        <div className="p">Your posts are currently loading. </div>
                     </div>
 
                 )}
