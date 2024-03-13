@@ -13,6 +13,7 @@ import NavBar from './navbar';
 import { getAuth } from "firebase/auth";
 import { addDoc, collection} from "firebase/firestore";
 import { db } from "../firebase";
+import { useNavigate } from "react-router-dom"
 
 
 //import allowing timestamp feature for the posts:
@@ -29,6 +30,8 @@ const Upload = () => {
         dress: '',
         shoes: '',
             })
+    const navigate = useNavigate();
+        
 
 /* uploadImage: Handles grabbing the file that the user inputted and grabbing the download url that is generated
 from uploading this image to the images folder in the Firebase storage.
@@ -70,7 +73,9 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
             dislikes:0,
             createdAt: serverTimestamp() // Add this line to include a timestamp
         }).then((docRef) => {
+            navigate("/home")
             console.log("Post added in firestore:", docRef.id);
+
         }).catch((error) => {
             console.error("Error adding doc: ", error)
         });
@@ -107,10 +112,7 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
             <div className='photo-outfit'>
                 <img src={imageUrl} alt="Today's outfit." className='photo-img'/>
             </div>
-            <button onClick= {uploadPost} className='uploadfit'>Share my outfit!</button>
             <div>
-            
-
                 <div className='clotheslinking'>
                 <h2 className='clothes-from'> Where are your clothes from? 🛍 </h2>
                 <h2 className="fits">👕</h2>
@@ -152,6 +154,10 @@ TLDR: Uploads the image to the firebase storage and grabs the url so it can be r
                     ></input> 
                 </div>
                 </div>
+                
+            </div>
+            <div className = "button-to-upload">
+            <button onClick= {uploadPost} className='uploadfit'>Share my outfit!</button>
             </div>
             
             </div>
