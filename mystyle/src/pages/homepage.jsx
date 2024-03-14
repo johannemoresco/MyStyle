@@ -51,11 +51,6 @@ const Homepage = () => {
     }
   };
 
-  const handleProfileClick = async () => {
-    const pathName = userInfo.uid;
-    window.location.href = `/otherprofile/${pathName}`
-  };
-
   const handleLike = async (postId) => {
     if (!currentUser) {
   alert("Please log in to like posts");
@@ -220,7 +215,7 @@ try {
       <NavBar/>
       {posts.map((post, index) => (
         <div key={index} className="post">
-          <h2 onClick={handleProfileClick}>@{post.username || 'User'}'s Post</h2>
+          <h2 >@{'User'}'s Post</h2>
                  {/* <img src={post.imageURL} alt="Post" className="post-image" /> */}
 
             <div className='photo-outfit'>
