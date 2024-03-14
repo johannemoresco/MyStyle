@@ -33,6 +33,10 @@ const Homepage = () => {
     const snapshot = await getDocs(postsRef);
     const postsPromises = snapshot.docs.map(doc => fetchPostDetails(doc.id));
     const postsDetails = await Promise.all(postsPromises);
+  
+    // Sort posts by createdAt field in descending order
+    postsDetails.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+  
     setPosts(postsDetails);
   };
 
@@ -222,8 +226,6 @@ try {
             <div className='photo-outfit'>
               <img src={post.imageURL} alt="Post" className="post-image" />
             </div>
-
-
 
           <div className="engagement">
             <p onClick={() => handleLike(post.id)}>👍 Likes: {post.likes}</p>
