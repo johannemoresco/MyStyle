@@ -58,7 +58,7 @@ const Otherprofile = () => {
                 <link rel="stylesheet" href="userprofile.css"></link>
                 <div className="profile-header">
                     <div className="profile-info">
-                        <div className="header1"> {userInfo.username}'s Drippy Closet </div>
+                        <div className="header1"> {userInfo.username}'s Closet </div>
                         
                     </div>
                 </div>
