@@ -11,6 +11,9 @@ Jeremy Dimas -> @jeremydimas <br>
 Yahir Dimas -> @yayhere <br>
 Gustavo Castrejon -> @Applesauce818 <br>
 
+## How to view history:
+Visit this link: https://github.com/johannemoresco/MyStyle
+
 ### How to Run My Style:
 1. Download Node and React <br>
 Node: https://nodejs.org/en/download <br> 
