@@ -13,7 +13,7 @@ Gustavo Castrejon -> @Applesauce818 <br>
 
 ### How to Run My Style:
 1. Download Node and React <br>
-Node: https://nodejs.org/en/download
+Node: https://nodejs.org/en/download <br> 
 React: https://react.dev/learn/installation
 
 2. Clone the repository: <br>
@@ -23,15 +23,10 @@ Copy and paste this on your terminal in order to clone the repository.
 3. Installing npm: <br>
 After successfully doing git clone on the URL, make sure to do ```npm install``` and then cd into the ```mystyle``` directory by doing ```cd mystyle```.
 
-4. Installing packages: <br>
-There are some packages that need to be installed. Copy and paste these commands in your terminal:
-```npm install react-icons``` <br>
-```npm install date-fns``` <br>
+4. Inputting the API Key: <br>
+This project will not run without the provided Firebase API Key. Please check your email for the API key, and then go to the file ```firebase.js``` and where it asks you for the API Key, copy and paste it there. Make sure the key is enclosed in quotation marks. Save the file. 
 
-5. Inputting the API Key: <br>
-This project will not run without the provided Firebase API Key. Please check your email for the API key, and then go to the file ```firebase.js``` and where it asks you for the API Key, copy and paste it there. Save the file. 
-
-6. Starting up local host: <br>
+5. Starting up local host: <br>
 After succesfully inputting the API key, type ```npm start``` on your terminal to start up local host and use the project.
 
 ### Using My Style: 
