@@ -54,53 +54,72 @@ const Homepage = () => {
 
   const handleLike = async (postId) => {
     if (!currentUser) {
-      alert("Please log in to like posts");
-      return;
+  alert("Please log in to like posts");
+  return;
+}
+
+
+const userId = currentUser.uid;
+const updatedPosts = posts.map(post => {
+  if (post.id === postId) {
+    const isLiked = post.likedBy?.includes(userId);
+    if (isLiked) {
+      return {
+        ...post,
+        likes: post.likes - 1,
+        likedBy: post.likedBy.filter(id => id !== userId),
+      };
+    } else {
+      return {
+        ...post,
+        likes: post.likes + 1,
+        likedBy: [...(post.likedBy || []), userId],
+      };
+    }
+  }
+  return post;
+});
+
+
+setPosts(updatedPosts);
+
+
+try {
+  const postRef = doc(db, "posts", postId);
+ 
+  await runTransaction(db, async (transaction) => {
+    const postSnapshot = await transaction.get(postRef);
+    if (!postSnapshot.exists()) {
+      throw new Error("Post does not exist!");
     }
 
-    const userId = currentUser.uid;
-    const updatedPosts = posts.map(post => {
-      if (post.id === postId) {
-        const isLiked = post.likedBy?.includes(userId);
-        if (isLiked) {
-          return {
-            ...post,
-            likes: post.likes - 1,
-            likedBy: post.likedBy.filter(id => id !== userId),
-          };
-        } else {
-          return {
-            ...post,
-            likes: post.likes + 1,
-            likedBy: [...(post.likedBy || []), userId],
-          };
-        }
-      }
-      return post;
-    });
 
-    setPosts(updatedPosts);
+    const postData = postSnapshot.data();
+    const likedBy = postData.likedBy || [];
+    let likes = postData.likes || 0;
 
-    try {
-      const postRef = doc(db, "posts", postId);
-      const postIndex = updatedPosts.findIndex(post => post.id === postId);
-      if (postIndex !== -1) {
-        const updatedPost = updatedPosts[postIndex];
-        const isLiked = updatedPost.likedBy.includes(userId);
-        if (isLiked) {
-          await updateDoc(postRef, {
-            likedBy: arrayUnion(userId),
-          });
-        } else {
-          await updateDoc(postRef, {
-            likedBy: arrayRemove(userId),
-          });
-        }
-      }
-    } catch (error) {
-      console.error("Failed to update like status in Firestore:", error);
+
+    if (likedBy.includes(userId)) {
+      // If user has already liked the post, unlike it
+      transaction.update(postRef, {
+        likedBy: arrayRemove(userId),
+        likes: likes - 1
+      });
+    } else {
+      // If user has not liked the post, like it
+      transaction.update(postRef, {
+        likedBy: arrayUnion(userId),
+        likes: likes + 1
+      });
     }
-  };
+  });
+
+
+  console.log("Like transaction successfully committed!");
+} catch (error) {
+  console.error("Failed to update like status in Firestore:", error);
+}
+};
 
   const handleDislike = async (postId) => {
     if (!currentUser) {
@@ -198,6 +217,14 @@ const Homepage = () => {
       {posts.map((post, index) => (
         <div key={index} className="post">
           <h2 onClick={handleProfileClick}>@{post.username || 'User'}'s Post</h2>
+                 {/* <img src={post.imageURL} alt="Post" className="post-image" /> */}
+
+            {/* <div className='photo-outfit'>
+              <img src={post.imageURL} alt="Post" className="post-image" />
+            </div> */}
+
+
+
           <img src={post.imageURL} alt="Post" className="post-image" />
           <div className="engagement">
             <p onClick={() => handleLike(post.id)}>👍 Likes: {post.likes}</p>
