@@ -9,16 +9,16 @@ export default function NavBar(){
    </a>
    <ul>
    <li>
-           <a href="/home">Home</a>
+           <a href="/home">HOME</a>
        </li>
        <li>
-           <a href="/upload">Upload</a>
+           <a href="/upload">UPLOAD</a>
        </li>
        <li>
-           <a href="/search">Search</a>
+           <a href="/search">SEARCH</a>
        </li>
        <li>
-           <a href="/profile">Profile</a>
+           <a href="/profile">PROFILE</a>
        </li>
 
    </ul>

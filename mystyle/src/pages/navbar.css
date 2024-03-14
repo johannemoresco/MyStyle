@@ -25,8 +25,8 @@
     right: 0; /* Ensure nav extends to the right edge */
 
 
-    background-color: #333;
-    color: white;
+    background-color: #414141;
+    color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -37,7 +37,7 @@
   
   @font-face {
     font-family: "Brush";
-    src: "../public/BrushScript.ttf";
+    src: url("./BrushScript.ttf");
   }
   
   .MyStyle-Title {
@@ -66,12 +66,12 @@
   
   
   .nav li.active {
-    background-color: #555;
+    background-color: #555555;
   }
   
   
   .nav li:hover {
-    background-color: #777;
+    background-color: #8b8b8b;
   }
   
   
