@@ -219,13 +219,12 @@ try {
           <h2 onClick={handleProfileClick}>@{post.username || 'User'}'s Post</h2>
                  {/* <img src={post.imageURL} alt="Post" className="post-image" /> */}
 
-            {/* <div className='photo-outfit'>
+            <div className='photo-outfit'>
               <img src={post.imageURL} alt="Post" className="post-image" />
-            </div> */}
+            </div>
 
 
 
-          <img src={post.imageURL} alt="Post" className="post-image" />
           <div className="engagement">
             <p onClick={() => handleLike(post.id)}>👍 Likes: {post.likes}</p>
             <p onClick={() => handleDislike(post.id)}>👎 Dislikes: {post.dislikes}</p>
