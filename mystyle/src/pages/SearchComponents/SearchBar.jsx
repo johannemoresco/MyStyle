@@ -1,47 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { db } from "../../firebase";
 import "./SearchBar.css";
 
-import { getDocs, query, collection, where } from 'firebase/firestore';
+import { getDocs, query, collectionGroup, where } from 'firebase/firestore';
 
 import { useNavigate } from 'react-router-dom';
 
 export const SearchBar = () => {
   const [input, setInput] = useState("");
-  const navigate = useNavigate(); // Use history for navigation
-  const [userInfo, setUserInfo] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (value) => setInput(value);
+ // console.log(input);
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = async (e) => {
     if (e.key === "Enter") {
-      navigate(`/otherprofile/${userInfo.uid}`); // Navigate to the Otherprofile component with the input as a URL param
+      const userID = await fetchUserID();
+      if(userID) {
+        navigate(`/otherprofile/${userID}`);
+      }
     }
   };
 
   const fetchUserID = async () => {
-    const nombre = input;
+    // console.log(input);
     try {
-      const usersCollectionRef = collection(db, "users");
-      const usersQuery = query(usersCollectionRef, where("username", "==", nombre));
-      const querySnapshot = await getDocs(usersQuery);
-      const userDataDocument = querySnapshot.docs.find(doc => doc.data().username === nombre);
-      if (userDataDocument) {
-        setUserInfo(userDataDocument.data());
+      const usernameQuery = query(collectionGroup(db, "userData"), where("username", "==", input));
+      const querySnapshot = await getDocs(usernameQuery);
+      
+      if (querySnapshot.empty) {
+        alert("No user with that username.");
       } else {
-        console.log("User data not found");
+        const userData = querySnapshot.docs[0].data(); 
+        const userID = userData.uid;
+      //  console.log("UID:", userID);
+        return userID;
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
   };
-  
-  useEffect(() => {
-      fetchUserID();
-  }, [input] );
-
-
   return (
     <div className="input-wrapper">
       <FaSearch id="search-icon" />
@@ -49,7 +48,7 @@ export const SearchBar = () => {
         placeholder="Search username..."
         value={input}
         onChange={(e) => handleChange(e.target.value)}
-        onKeyPress={handleKeyPress}
+        onKeyUp={handleKeyPress}
       />
     </div>
   );
