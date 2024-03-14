@@ -6,11 +6,17 @@
   font-family: Calibri, sans-serif;
 }
 
-h2{
+h3{
 margin-top: 5px;
-margin-bottom: -10px;
+margin-bottom: 20px;
 color: #000000;
+font-size: 20px;
+font-family: Calibri, sans-serif;
+font-weight: 20px;
+text-align: center;
 }
+
+
 
 .post {
 display: block;
@@ -24,7 +30,7 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 30);
 color: #000000;
 border-radius: 10px;
 padding: 30px 40px;
-margin-top: 100px;
+margin-top: 50px;
 }
 
 
@@ -37,22 +43,15 @@ margin-top: 100px;
   padding: 50px;
   text-align: left;
   overflow: hidden;
-  background-color: whitesmoke;
+  background-color: rgb(0, 0, 0);
   margin-top: 15px;
 }
 
 .post img 
 {
-  /* width: 30%; 
-  height: auto; 
-  object-fit: cover; 
   border-radius: 9px; 
-  margin-bottom: 10px; 
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 10);
-  margin-left: 0 auto;
-  margin-top: 15px;
-  display: block;
-  text-align: left; */
+
 
   width: 100%;
   height: 100%;
@@ -62,11 +61,9 @@ margin-top: 100px;
 .clothes-data
 {
   /* text-align: right; */
-  margin-top: -375px;
+  margin-top: -400px;
   margin-left: 350px;
   font-size: 40px;
-
-
   width: 450px;
   background: rgb(255, 253, 253);
   border: 2px solid rgba(0, 0, 0, 0.034);
@@ -76,7 +73,7 @@ margin-top: 100px;
   padding: 30px 40px;
 }
 
-.Time p
+.post-date
 {
   font-size: 20px;
   margin-top: 30px;
@@ -86,10 +83,10 @@ margin-top: 100px;
 }
 
 .engagement p{
-font-size: 30px;
+font-size: 20px;
 display: inline-block;
-margin-left: 50px;
-margin-top: 15px;
+margin-left: 20px;
+margin-top: 20px;
 }
 
 .content {
